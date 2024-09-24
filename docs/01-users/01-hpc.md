@@ -45,18 +45,19 @@ conda create --name JupyterTutorial
 # Activate the sample environment
 conda activate JupyterTutorial
 
-# Install Jupyter
-conda install jupyter
+# Install Jupyter, NodeJS (for slurm extension)
+conda install jupyter nodejs
 
-# Install Slurm Extension
+# Install Jupyter Slurm Extension
 jupyter labextension install jupyterlab-slurm
 ```
 
 Next, we will create a script to launch a Jupyter environment, to be executed via `srun`. Note that the port below, `30000`, may not be availible on your particular node. See the [Network Ports](#network-ports) section above for potentially availible ports.
 
 ```bash
-echo 'conda activate JupyterTutorial
-jupyter-notebook --no-browser --ip=0.0.0.0 --port 30000' > ./jupyter.sh
+echo '#!/bin/bash
+conda activate JupyterTutorial
+jupyter-lab --no-browser --ip 0.0.0.0 --port 30000' > ./jupyter.sh
 chmod +x ~/jupyter.sh
 ```
 
@@ -64,6 +65,15 @@ chmod +x ~/jupyter.sh
 Next, use `srun` to launch the notebook.
 
 ```bash
-# 2 
-srun -t 6-09:59:59 --cpus-per-task=2 --ntasks=1 --mem-per-cpu=8G --pty bash -i
+# Start a notebook with 2 CPUs and 16GB of RAM
+srun -t 6-09:59:59 --cpus-per-task=2 --ntasks=1 --mem-per-cpu=8G --pty ~/jupyter.sh
+
+# Start a notebook with 16 CPUs, 64GB of RAM, and an A100 (80GB)
+srun -t 6-09:59:59 --cpus-per-task=16 --ntasks=1 --mem-per-cpu=4G --gres=gpu:a100-80gb:1 --pty ~/jupyter.sh
+
+# Start a notebook with 32 CPUs, 64GB of RAM, and 2 GPUs
+srun -t 6-09:59:59 --cpus-per-task=32 --ntasks=1 --mem-per-cpu=2G --gres=gpu:2 --pty ~/jupyter.sh
+
+# Start a notebook with 32 CPUs, 64GB of RAM, and an A100 (40GB)
+srun -t 6-09:59:59 --cpus-per-task=32 --ntasks=1 --mem-per-cpu=2G --gres=gpu:a100-40gb:1 --pty ~/jupyter.sh
 ```
