@@ -1,4 +1,4 @@
-# HPC Usage
+# HPC with Slurm
 
 ## Login
 
@@ -45,11 +45,8 @@ conda create --name JupyterTutorial
 # Activate the sample environment
 conda activate JupyterTutorial
 
-# Install Jupyter, NodeJS (for slurm extension)
-conda install jupyter nodejs
-
-# Install Jupyter Slurm Extension
-jupyter labextension install jupyterlab-slurm
+# Install Jupyter
+conda install jupyter
 ```
 
 Next, we will create a script to launch a Jupyter environment, to be executed via `srun`. Note that the port below, `30000`, may not be availible on your particular node. See the [Network Ports](#network-ports) section above for potentially availible ports.

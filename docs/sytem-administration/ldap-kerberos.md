@@ -7,6 +7,8 @@
 Query why we want read by *
 
 ```bash
+ldapsearch -Q -LLL -Y EXTERNAL -H ldapi:/// -b cn=%sysadmin,ou=sudoers,dc=cms,dc=physics,dc=ua,dc=edu
+
 ldapsearch -Q -LLL -Y EXTERNAL -H ldapi:/// -b cn=config '(olcDatabase={2}mdb)' olcAccess
 
 ldapmodify -Q -Y EXTERNAL -H ldapi:///<<EOF
