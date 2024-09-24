@@ -13,9 +13,9 @@ ssh username@10.116.25.113
 # ssh username@hpc.cms.physics.ua.edu
 ```
 
+## Resources
 
-
-## Data Storage
+### Data Storage
 
 We provide three networked volumes for your convenience:
 
@@ -24,3 +24,46 @@ We provide three networked volumes for your convenience:
 - `/scratch/your-name` is based on SSDs. Note that this directory should **not be used for long-term storage**, and will be **wiped regularly**.
 
 Note that your `bighome` and `scratch` directories are availible under `$BIGHOME` and `$SCRATCH`.
+
+### Network Ports
+
+Ports 30000-30500 are exposed on all nodes.
+
+## Using Jupyter
+
+We will create a Jupyterlab setup in a Conda environment. For the purposes of instruction, we will install **Miniforge** and create a sample Conda environment.
+
+```bash
+# Install Miniforge
+curl https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+chmod +x Miniforge3-Linux-x86_64.sh
+./Miniforge3-Linux-x86_64.sh
+
+# Create Sample Environment
+conda create --name JupyterTutorial
+
+# Activate the sample environment
+conda activate JupyterTutorial
+
+# Install Jupyter
+conda install jupyter
+
+# Install Slurm Extension
+jupyter labextension install jupyterlab-slurm
+```
+
+Next, we will create a script to launch a Jupyter environment, to be executed via `srun`. Note that the port below, `30000`, may not be availible on your particular node. See the [Network Ports](#network-ports) section above for potentially availible ports.
+
+```bash
+echo 'conda activate JupyterTutorial
+jupyter-notebook --no-browser --ip=0.0.0.0 --port 30000' > ./jupyter.sh
+chmod +x ~/jupyter.sh
+```
+
+
+Next, use `srun` to launch the notebook.
+
+```bash
+# 2 
+srun -t 6-09:59:59 --cpus-per-task=2 --ntasks=1 --mem-per-cpu=8G --pty bash -i
+```
