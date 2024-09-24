@@ -1,4 +1,5 @@
 site_name: UA CMS Cluster Documentation
+site_url: https://cmsua.github.io/cms-cluster-docs/
 theme:
   name: readthedocs
   highlightjs: true
