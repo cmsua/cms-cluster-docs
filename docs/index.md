@@ -24,7 +24,7 @@ To launch MATLAB in the Desktop option, from a terminal window, run `DISPLAY=:1 
 During the extension install process, the Xilinx support libraries are written to the `$HOME/Documents` folder, which is overwritten by your user data volume. As such, to enable the support packages, run the following command:
 
 ```bash
-wget -q https://www.mathworks.com/mpm/glnxa64/mpm \
+wget https://www.mathworks.com/mpm/glnxa64/mpm \
   && chmod +x mpm \
   && ./mpm install \
   --release=r2024b \
