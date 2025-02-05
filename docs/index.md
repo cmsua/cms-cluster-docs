@@ -8,7 +8,7 @@ Once an account has been created, it will not have access to any resources until
 
 ## JupyterHub (FPGA, GPU) Access
 
-GPUs and FPGAs can be accessed via [JupyterHub](https://jupyter.cms.physics.ua.edu) while connected to the UA network. Connection can be either via an Ethernet cable in a UA-building, or via the [UA VPN](https://oit.ua.edu/services/internet-networking/).
+GPUs and FPGAs can be accessed via [JupyterHub](https://jupyter.cms.physics.ua.edu) while connected to the UA network. Connection can be either via an Ethernet cable in a UA-building, or via the [UA VPN](https://oit.ua.edu/services/internet-networking/). Note that if a proxy is enabled in your browser settings, it must be disabled.
 
 There are two notebook options available that support FPGAs:
 
