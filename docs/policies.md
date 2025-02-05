@@ -6,4 +6,8 @@ We don't promise anything. While we try to be secure, and while we try not to lo
 
 ## No Privacy
 
-Though this falls under the above, we also cannot guerentee the privacy nor integrity of your data. It could be read, modified, or deleted by anyone on the network at any time.
+Though this falls under the above, we also cannot guarantee the privacy nor integrity of your data. It could be read, modified, or deleted by anyone on the network at any time.
+
+## Personal Use
+
+Don't give someone a reason to stop you and nobody will care. Note that if you're running a personal notebook and consuming GPU/FPGA resources, someone may kill it.

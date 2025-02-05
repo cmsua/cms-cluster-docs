@@ -1,5 +1,9 @@
 # HPC with Slurm
 
+## Deprecated
+
+Slurm access is deprecated. If there are files in your `/home/`, `/bighome`, or `/scratch` directories, please reach out to an administrator for access.
+
 ## Login
 
 Simply having an account with HPC permissions is not sufficient to login to the cluster. To do so, please request access via a system administrator.
