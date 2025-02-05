@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://cmsua.github.io/cms-cluster-docs/slurm/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>HPC with Slurm - UA CMS Cluster Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "HPC with Slurm";
+        var mkdocs_page_input_path = "slurm.md";
+        var mkdocs_page_url = "/cms-cluster-docs/slurm/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UA CMS Cluster Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../policies/">Policies</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">HPC with Slurm</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#deprecated">Deprecated</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#login">Login</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#resources">Resources</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data-storage">Data Storage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#network-ports">Network Ports</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-jupyter">Using Jupyter</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Administration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../administration/01-user-management/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sytem administration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../sytem-administration/ldap-kerberos/">Account Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sytem-administration/storage/">Rook Debugging</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UA CMS Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">HPC with Slurm</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="hpc-with-slurm">HPC with Slurm</h1>
+<h2 id="deprecated">Deprecated</h2>
+<p>Slurm access is deprecated. If there are files in your <code>/home/</code>, <code>/bighome</code>, or <code>/scratch</code> directories, please reach out to an administrator for access.</p>
+<h2 id="login">Login</h2>
+<p>Simply having an account with HPC permissions is not sufficient to login to the cluster. To do so, please request access via a system administrator.</p>
+<p>Then, login to the cluster with the following command:</p>
+<pre><code class="language-bash">ssh username@10.116.25.113
+# The static IP is in-place due to issues with OIT DNS
+# The actual command is below:
+# ssh username@hpc.cms.physics.ua.edu
+</code></pre>
+<h2 id="resources">Resources</h2>
+<h3 id="data-storage">Data Storage</h3>
+<p>We provide three networked volumes for your convenience:</p>
+<ul>
+<li><code>/home/your-name</code> is the generic home directory. Assume that space is limited.</li>
+<li><code>/bighome/your-name</code> is based on HDDs, and intended for large objects. While we don't set per-user quotas, we do have an overall cluster limit.</li>
+<li><code>/scratch/your-name</code> is based on SSDs. Note that this directory should <strong>not be used for long-term storage</strong>, and will be <strong>wiped regularly</strong>.</li>
+</ul>
+<p>Note that your <code>bighome</code> and <code>scratch</code> directories are availible under <code>$BIGHOME</code> and <code>$SCRATCH</code>.</p>
+<h3 id="network-ports">Network Ports</h3>
+<p>Ports 30000-30500 are exposed on all nodes.</p>
+<h2 id="using-jupyter">Using Jupyter</h2>
+<p>We will create a Jupyterlab setup in a Conda environment. For the purposes of instruction, we will install <strong>Miniforge</strong> and create a sample Conda environment.</p>
+<pre><code class="language-bash"># Install Miniforge
+curl https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+chmod +x Miniforge3-Linux-x86_64.sh
+./Miniforge3-Linux-x86_64.sh
+
+# Create Sample Environment
+conda create --name JupyterTutorial
+
+# Activate the sample environment
+conda activate JupyterTutorial
+
+# Install Jupyter
+conda install jupyter
+</code></pre>
+<p>Next, we will create a script to launch a Jupyter environment, to be executed via <code>srun</code>. Note that the port below, <code>30000</code>, may not be availible on your particular node. See the <a href="#network-ports">Network Ports</a> section above for potentially availible ports.</p>
+<pre><code class="language-bash">echo '#!/bin/bash
+conda activate JupyterTutorial
+jupyter-lab --no-browser --ip 0.0.0.0 --port 30000' &gt; ./jupyter.sh
+chmod +x ~/jupyter.sh
+</code></pre>
+<p>Next, use <code>srun</code> to launch the notebook.</p>
+<pre><code class="language-bash"># Start a notebook with 2 CPUs and 16GB of RAM
+srun -t 6-09:59:59 --cpus-per-task=2 --ntasks=1 --mem-per-cpu=8G --pty ~/jupyter.sh
+
+# Start a notebook with 16 CPUs, 64GB of RAM, and an A100 (80GB)
+srun -t 6-09:59:59 --cpus-per-task=16 --ntasks=1 --mem-per-cpu=4G --gres=gpu:a100-80gb:1 --pty ~/jupyter.sh
+
+# Start a notebook with 32 CPUs, 64GB of RAM, and 2 GPUs
+srun -t 6-09:59:59 --cpus-per-task=32 --ntasks=1 --mem-per-cpu=2G --gres=gpu:2 --pty ~/jupyter.sh
+
+# Start a notebook with 32 CPUs, 64GB of RAM, and an A100 (40GB)
+srun -t 6-09:59:59 --cpus-per-task=32 --ntasks=1 --mem-per-cpu=2G --gres=gpu:a100-40gb:1 --pty ~/jupyter.sh
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../policies/" class="btn btn-neutral float-left" title="Policies"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../administration/01-user-management/" class="btn btn-neutral float-right" title="User Management">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../policies/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../administration/01-user-management/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

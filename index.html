@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" /><link rel="canonical" href="https://cmsua.github.io/cms-cluster-docs/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>UA CMS Cluster Documentation</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Getting Started";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/cms-cluster-docs/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> UA CMS Cluster Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting Started</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#account-creation">Account Creation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jupyterhub-fpga-gpu-access">JupyterHub (FPGA, GPU) Access</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation-of-hdl-toolbox-coder-fpga-support-libraries">Installation of HDL Toolbox / Coder FPGA Support Libraries</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-registry">Docker Registry</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="policies/">Policies</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="slurm/">HPC with Slurm</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Administration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="administration/01-user-management/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sytem administration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="sytem-administration/ldap-kerberos/">Account Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="sytem-administration/storage/">Rook Debugging</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">UA CMS Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="getting-started">Getting Started</h1>
+<h2 id="account-creation">Account Creation</h2>
+<p>Create an account with the cluster at <a href="https://auth.cms.physics.ua.edu/realms/ua-cms/account/">Account Console</a>, or ask an administrator to create one on your behalf.</p>
+<p>Once an account has been created, it will not have access to any resources until granted such by an administrator.</p>
+<h2 id="jupyterhub-fpga-gpu-access">JupyterHub (FPGA, GPU) Access</h2>
+<p>GPUs and FPGAs can be accessed via <a href="https://jupyter.cms.physics.ua.edu">JupyterHub</a> while connected to the UA network. Connection can be either via an Ethernet cable in a UA-building, or via the <a href="https://oit.ua.edu/services/internet-networking/">UA VPN</a>. Note that if a proxy is enabled in your browser settings, it must be disabled.</p>
+<p>There are two notebook options available that support FPGAs:</p>
+<ul>
+<li>MATLAB with FPGA (1x Alveo U200)</li>
+<li>MATLAB without FPGA</li>
+</ul>
+<p>Currently, the cluster has <strong>3</strong> FPGAs installed. If all FPGAs are in use, your notebook will not launch. Each FPGA notebook is provided with MATLAB Online, as well as VNC access to the Desktop version via the "Desktop" option. To launch MATLAB in the Desktop option, from a terminal window, run <code>DISPLAY=:1 /opt/matlab/bin/matlab</code></p>
+<p>Additionally, there are four notebooks that support GPUs:</p>
+<ul>
+<li>PyTorch with GPU</li>
+<li>PyTorch without GPU</li>
+<li>TensorFlow with GPU</li>
+<li>TensorFlow without GPU</li>
+</ul>
+<p>There is currently <strong>1</strong> GPU in the cluster:</p>
+<ul>
+<li>1x NVIDIA A100 (40GB)</li>
+<li>2x NVIDIA A100 (80GB) (Temporarily Removed)</li>
+</ul>
+<h3 id="installation-of-hdl-toolbox-coder-fpga-support-libraries">Installation of HDL Toolbox / Coder FPGA Support Libraries</h3>
+<p>During the extension install process, the Xilinx support libraries are written to the <code>$HOME/Documents</code> folder, which is overwritten by your user data volume. As such, to enable the support packages, run the following command while launching a MatLab environment:</p>
+<pre><code class="language-bash">wget https://www.mathworks.com/mpm/glnxa64/mpm \
+  &amp;&amp; chmod +x mpm \
+  &amp;&amp; ./mpm install \
+  --release=r2024b \
+  --destination=/opt/matlab \
+  --products Deep_Learning_HDL_Toolbox_Support_Package_for_Xilinx_FPGA_and_SoC_Devices HDL_Coder_Support_Package_for_Xilinx_FPGA_and_SoC_Devices
+</code></pre>
+<p>This only needs to be ran once per-user.</p>
+<h2 id="docker-registry">Docker Registry</h2>
+<p>When deploying images to run on the cluster, the cluster's <a href="https://registry.cms.physics.ua.edu">Docker Registry</a> should be used.</p>
+<p>Note that when authenticating the registry via the command-line, the password prompt should be filled with a token generated from the registry's web GUI, not your actual password.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="policies/" class="btn btn-neutral float-right" title="Policies">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="policies/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-02-05 19:48:26.600239+00:00
+-->
